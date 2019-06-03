@@ -7,9 +7,11 @@ import styles from './PropertyPage.module.css';
 
 interface State {
   propertyFilter: string;
+  propertyList: Array<any>;
+  propertyStatus: string;
 }
 
-class PropertyPage extends React.Component {
+class PropertyPage extends React.Component<any, State> {
   constructor(props: any) {
     super(props);
     this.state = {

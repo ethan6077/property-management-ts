@@ -1,0 +1,20 @@
+.propertyPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.loaderContainer {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.msgContainer {
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 5%;
+}
+

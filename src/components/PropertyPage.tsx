@@ -1,9 +1,13 @@
 import React from 'react';
 import HeaderContainer from './header/HeaderContainer';
-import PropertyListContainer from './properties/PropertyListContainer';
+// import PropertyListContainer from './properties/PropertyListContainer';
 import Loader from './common/Loader';
 import Error from './common/Error';
 import styles from './PropertyPage.module.css';
+
+interface State {
+  propertyFilter: string;
+}
 
 class PropertyPage extends React.Component {
   constructor(props: any) {
@@ -28,7 +32,7 @@ class PropertyPage extends React.Component {
     }
   }
 
-  changeFilter = (event) => {
+  changeFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
       propertyFilter: event.target.value,
     });
@@ -60,7 +64,7 @@ class PropertyPage extends React.Component {
     return (
       <React.Fragment>
         <HeaderContainer propertyFilter={this.state.propertyFilter} changeFilter={this.changeFilter} />
-        <PropertyListContainer propertyList={filteredPropertyList} />
+        {/* <PropertyListContainer propertyList={filteredPropertyList} /> */}
       </React.Fragment>
     )
   }

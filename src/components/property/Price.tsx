@@ -2,7 +2,7 @@ import React from 'react';
 import numeral from 'numeral';
 
 export interface Props {
-  price: Number;
+  price: number;
 }
 
 function Price(props: Props) {

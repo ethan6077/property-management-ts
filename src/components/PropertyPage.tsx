@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, ChangeEvent } from 'react';
 import HeaderContainer from './header/HeaderContainer';
 // import PropertyListContainer from './properties/PropertyListContainer';
 import Loader from './common/Loader';
@@ -11,7 +11,7 @@ interface State {
   propertyStatus: string;
 }
 
-class PropertyPage extends React.Component<any, State> {
+class PropertyPage extends Component<any, State> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -34,7 +34,7 @@ class PropertyPage extends React.Component<any, State> {
     }
   }
 
-  changeFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
+  changeFilter = (event: ChangeEvent<HTMLSelectElement>) => {
     this.setState({
       propertyFilter: event.target.value,
     });

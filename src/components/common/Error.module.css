@@ -1,0 +1,30 @@
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #c13e3e;
+  height: 80px;
+  width: 1000px;
+  padding: 20px;
+}
+
+.sadFace {
+  height: 20px;
+  width: 20px;
+}
+
+.errorSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.text {
+  margin-left: 20px;
+}
+
+.refreshBtn {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}

@@ -1,13 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
 import styles from './SmallCircle.module.css';
-import  { PropertyStatus } from '../../types';
+import  { EPropertyStatus } from '../../types';
 
-interface Props {
-  status: PropertyStatus;
+interface IProps {
+  status: EPropertyStatus;
 }
 
-function SmallCircle(props: Props) {
+function SmallCircle(props: IProps) {
   const { status } = props;
     return (
       <span className={classNames({

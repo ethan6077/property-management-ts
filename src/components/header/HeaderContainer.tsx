@@ -2,12 +2,12 @@ import React, { ChangeEvent } from 'react';
 import StatusMap from './StatusMap';
 import styles from './HeaderContainer.module.css';
 
-interface Props {
+interface IProps {
   propertyFilter: string;
   changeFilter: (event: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-function HeaderContainer(props: Props) {
+function HeaderContainer(props: IProps) {
   const { propertyFilter, changeFilter } = props;
   const statusArray = Array.from(StatusMap.keys());
   return (

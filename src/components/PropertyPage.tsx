@@ -5,13 +5,13 @@ import Loader from './common/Loader';
 import Error from './common/Error';
 import styles from './PropertyPage.module.css';
 
-interface State {
+interface IState {
   propertyFilter: string;
   propertyList: Array<any>;
   propertyStatus: string;
 }
 
-class PropertyPage extends Component<any, State> {
+class PropertyPage extends Component<any, IState> {
   constructor(props: any) {
     super(props);
     this.state = {

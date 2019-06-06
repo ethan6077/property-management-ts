@@ -3,13 +3,13 @@ import styles from './Property.module.css';
 import Price from './Price';
 import PropertyStatus from './PropertyStatus';
 import Address from './Address';
-import { Property } from '../../types'
+import { IProperty } from '../../types'
 
-interface Props {
-  property: Property;
+interface IProps {
+  property: IProperty;
 }
 
-function Property(props: Props) {
+function Property(props: IProps) {
   const { property } = props;
   return (
     <div className={styles.container}>

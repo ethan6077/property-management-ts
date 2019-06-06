@@ -1,22 +1,22 @@
-export enum PropertyStatus {
+export enum EPropertyStatus {
   Current = 'current',
   Sold = 'sold',
   WithDrawn = 'withdrawn',
   OffMarket = 'off_market',
 };
 
-export interface Address {
+export interface IAddress {
   street: string;
   suburb: string;
   state: string;
   postcode: string;
 }
 
-export interface Property {
+export interface IProperty {
   id: number;
   image: string;
   price: number;
-  status: string; 
+  status: EPropertyStatus; 
   street: string;
   suburb: string;
   state: string;

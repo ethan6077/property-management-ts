@@ -2,7 +2,7 @@ import React, { ChangeEvent } from 'react';
 import StatusMap from './StatusMap';
 import styles from './HeaderContainer.module.css';
 
-export interface Props {
+interface Props {
   propertyFilter: string;
   changeFilter: (event: ChangeEvent<HTMLSelectElement>) => void;
 }

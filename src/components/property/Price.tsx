@@ -1,7 +1,7 @@
 import React from 'react';
 import numeral from 'numeral';
 
-export interface Props {
+interface Props {
   price: number;
 }
 

@@ -1,0 +1,27 @@
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: grey;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.current {
+  composes: dot;
+  background-color: green;
+}
+
+.sold {
+  composes: dot;
+  background-color: tomato;
+}
+
+.offMarket {
+  composes: dot;
+  background-color: orange;
+}
+
+.withDrawn {
+  composes: dot;
+  background-color: brown;
+}

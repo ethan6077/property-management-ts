@@ -1,14 +1,8 @@
 import React from 'react';
 import styles from './Address.module.css';
+import { Address } from '../../types';
 
-export interface Props {
-  street: string;
-  suburb: string;
-  state: string;
-  postcode: string;
-}
-
-function Address(props: Props) {
+function Address(props: Address) {
   const { street, suburb, state, postcode } = props;
   return (
     <div className={styles.container}>

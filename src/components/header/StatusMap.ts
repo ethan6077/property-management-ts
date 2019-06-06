@@ -4,4 +4,5 @@ const StatusMap = new Map([
   ['withdrawn', 'With Drawn'],
   ['off_market', 'Off Market'],
 ]);
+
 export default StatusMap;

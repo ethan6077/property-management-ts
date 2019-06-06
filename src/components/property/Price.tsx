@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as numeral from 'numeral';
+import React from 'react';
+import numeral from 'numeral';
 
 export interface Props {
   price: Number;

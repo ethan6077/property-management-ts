@@ -3,13 +3,13 @@
   margin-top: 80px;
 }
 
-ul {
+.listContainer ul {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
 }
 
-li {
+.listContainer li {
   background-color: transparent;
   padding: 20px;
 }

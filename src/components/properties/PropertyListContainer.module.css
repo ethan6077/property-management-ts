@@ -1,0 +1,15 @@
+.listContainer {
+  flex: 1;
+  margin-top: 80px;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+li {
+  background-color: transparent;
+  padding: 20px;
+}

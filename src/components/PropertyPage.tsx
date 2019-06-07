@@ -1,6 +1,6 @@
 import React, { Component, ChangeEvent } from 'react';
 import HeaderContainer from './header/HeaderContainer';
-// import PropertyListContainer from './properties/PropertyListContainer';
+import PropertyListContainer from './properties/PropertyListContainer';
 import Loader from './common/Loader';
 import Error from './common/Error';
 import styles from './PropertyPage.module.css';
@@ -66,7 +66,7 @@ class PropertyPage extends Component<any, IState> {
     return (
       <React.Fragment>
         <HeaderContainer propertyFilter={this.state.propertyFilter} changeFilter={this.changeFilter} />
-        {/* <PropertyListContainer propertyList={filteredPropertyList} /> */}
+        <PropertyListContainer propertyList={filteredPropertyList} />
       </React.Fragment>
     )
   }

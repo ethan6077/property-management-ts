@@ -9,6 +9,8 @@
     "@types/numeral": "0.0.25",
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
+    "classnames": "^2.2.6",
+    "numeral": "^2.0.6",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",

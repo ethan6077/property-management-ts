@@ -22,3 +22,9 @@ export interface IProperty {
   state: string;
   postcode: string;
 }
+
+export interface IStoreState {
+  propertyFilter: string;
+  propertyList: Array<IProperty>;
+  propertyListStatus: string;
+}

@@ -3,13 +3,13 @@ import styles from './Property.module.css';
 import Price from './Price';
 import PropertyStatus from './PropertyStatus';
 import Address from './Address';
-import { IProperty } from '../../types'
+import { PropertyI } from '../../types';
 
-interface IProps {
-  property: IProperty;
+interface Props {
+  property: PropertyI;
 }
 
-function Property(props: IProps) {
+function Property(props: Props): JSX.Element {
   const { property } = props;
   return (
     <div className={styles.container}>

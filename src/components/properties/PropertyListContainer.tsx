@@ -1,13 +1,13 @@
 import React from 'react';
 import PropertyList from './PropertyList';
-import { IProperty } from '../../types';
+import { PropertyI } from '../../types';
 import styles from './PropertyListContainer.module.css';
 
-interface IProps {
-  propertyList: Array<IProperty>;
+interface Props {
+  propertyList: PropertyI[];
 }
 
-function PropertyListContainer(props: IProps) {
+function PropertyListContainer(props: Props): JSX.Element {
   const { propertyList } = props;
   return (
     <div className={styles.listContainer}>

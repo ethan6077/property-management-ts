@@ -1,19 +1,23 @@
 import React from 'react';
 import Property from '../property/Property';
-import { IProperty } from '../../types';
+import { PropertyI } from '../../types';
 
-interface IProps {
-  propertyList: Array<IProperty>;
+interface Props {
+  propertyList: PropertyI[];
 }
 
-function renderPropertyItem(property: IProperty) {
-  return <li key={property.id}><Property property={property} /></li>
+function renderPropertyItem(property: PropertyI): JSX.Element {
+  return (
+    <li key={property.id}>
+      <Property property={property} />
+    </li>
+  );
 }
 
-function PropertyList(props: IProps) {
+function PropertyList(props: Props): JSX.Element {
   const { propertyList } = props;
   return (
-    <ul>{propertyList.map(item => renderPropertyItem(item))}</ul>
+    <ul>{propertyList.map((item): JSX.Element => renderPropertyItem(item))}</ul>
   );
 }
 

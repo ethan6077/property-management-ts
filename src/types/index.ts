@@ -23,7 +23,7 @@ export interface PropertyI {
   postcode: string;
 }
 
-export interface StoreState {
+export interface StoreStateI {
   propertyFilter: string;
   propertyList: PropertyI[];
   propertyListStatus: string;

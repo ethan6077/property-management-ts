@@ -2,13 +2,13 @@ import React from 'react';
 import SmallCircle from './SmallCircle';
 import StatusMap from '../header/StatusMap';
 import styles from './PropertyStatus.module.css';
-import { EPropertyStatus } from '../../types';
+import { PropertyStatusE } from '../../types';
 
-interface IProps {
-  status: EPropertyStatus;
+interface Props {
+  status: PropertyStatusE;
 }
 
-function PropertyStatus(props: IProps) {
+function PropertyStatus(props: Props): JSX.Element {
   const { status } = props;
   const statusValue = StatusMap.get(status);
   return (

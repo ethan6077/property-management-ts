@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './Address.module.css';
-import { IAddress } from '../../types';
+import { AddressI } from '../../types';
 
-function Address(props: IAddress) {
+function Address(props: AddressI): JSX.Element {
   const { street, suburb, state, postcode } = props;
   return (
     <div className={styles.container}>

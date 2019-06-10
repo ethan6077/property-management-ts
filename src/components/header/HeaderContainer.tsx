@@ -2,25 +2,33 @@ import React, { ChangeEvent } from 'react';
 import StatusMap from './StatusMap';
 import styles from './HeaderContainer.module.css';
 
-interface IProps {
+interface Props {
   propertyFilter: string;
   changeFilter: (event: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-function HeaderContainer(props: IProps) {
+function HeaderContainer(props: Props): JSX.Element {
   const { propertyFilter, changeFilter } = props;
   const statusArray = Array.from(StatusMap.keys());
   return (
     <div className={styles.headerContainer}>
-      <select className={styles.headerSelect} value={propertyFilter} onChange={changeFilter}>
-        <option key={'default'} value="default">Filter Status</option>
-        {
-          statusArray.map((statusKey) => {
+      <select
+        className={styles.headerSelect}
+        value={propertyFilter}
+        onChange={changeFilter}
+      >
+        <option key={'default'} value="default">
+          Filter Status
+        </option>
+        {statusArray.map(
+          (statusKey): JSX.Element => {
             return (
-              <option key={statusKey} value={statusKey}>{StatusMap.get(statusKey)}</option>
+              <option key={statusKey} value={statusKey}>
+                {StatusMap.get(statusKey)}
+              </option>
             );
-          })
-        }
+          }
+        )}
       </select>
     </div>
   );

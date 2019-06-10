@@ -1,8 +1,6 @@
 import { createStore } from 'redux';
-import { initialState, propertiesReducer } from '../reducers/index';
-import { PropertyActions } from '../actions';
-import { IStoreState } from '../types';
+import { propertiesReducer } from '../reducers/index';
 
-const store = createStore(propertiesReducer, initialState);
+const store = createStore(propertiesReducer);
 
 export default store;

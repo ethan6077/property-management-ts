@@ -1,33 +1,36 @@
 import * as constants from '../constants';
 
-interface IFetchPropertiesStart {
+interface FetchPropertiesStartI {
   type: constants.FETCH_PROPERTIES_START;
 }
 
-export function fetchPropertiesStart(): IFetchPropertiesStart {
+export function fetchPropertiesStart(): FetchPropertiesStartI {
   return {
-    type: constants.FETCH_PROPERTIES_START,
-  }
-};
+    type: constants.FETCH_PROPERTIES_START
+  };
+}
 
-interface IFetchPropertiesDone {
+interface FetchPropertiesDoneI {
   type: constants.FETCH_PROPERTIES_DONE;
 }
 
-export function fetchPropertiesDone(): IFetchPropertiesDone {
+export function fetchPropertiesDone(): FetchPropertiesDoneI {
   return {
-    type: constants.FETCH_PROPERTIES_DONE,
-  }
-};
+    type: constants.FETCH_PROPERTIES_DONE
+  };
+}
 
-interface IFetchPropertiesError {
+interface FetchPropertiesErrorI {
   type: constants.FETCH_PROPERTIES_ERROR;
 }
 
-export function fetchPropertiesError(): IFetchPropertiesError {
+export function fetchPropertiesError(): FetchPropertiesErrorI {
   return {
-    type: constants.FETCH_PROPERTIES_ERROR,
-  }
-};
+    type: constants.FETCH_PROPERTIES_ERROR
+  };
+}
 
-export type PropertyActions = IFetchPropertiesStart | IFetchPropertiesDone | IFetchPropertiesError;
+export type PropertyActions =
+  | FetchPropertiesStartI
+  | FetchPropertiesDoneI
+  | FetchPropertiesErrorI;

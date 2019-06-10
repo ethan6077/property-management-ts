@@ -1,6 +1,7 @@
-import { connect, Dispatch } from 'react-redux';
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { IStoreState, IProperty } from '../types';
+import { IStoreState } from '../types';
 import PropertyList from '../components/properties/PropertyList';
 
 function mapStateToProps(state: IStoreState) {

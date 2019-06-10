@@ -2,7 +2,13 @@ import { IStoreState } from '../types';
 import { PropertyActions } from '../actions';
 import { FETCH_PROPERTIES_START, FETCH_PROPERTIES_DONE, FETCH_PROPERTIES_ERROR } from '../constants';
 
-export function propertiesReducer(state: IStoreState, action: PropertyActions): IStoreState {
+export const initialState = {
+  propertyFilter: 'default',
+  propertyList: [],
+  propertyListStatus: 'initial',
+};
+
+export function propertiesReducer(state: IStoreState, action) {
   switch (action.type) {
     case FETCH_PROPERTIES_START:
       return {
@@ -21,4 +27,5 @@ export function propertiesReducer(state: IStoreState, action: PropertyActions): 
       };
   }
   return state;
-}
+};
+

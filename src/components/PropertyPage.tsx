@@ -3,28 +3,31 @@ import HeaderContainer from './header/HeaderContainer';
 import PropertyListContainer from './properties/PropertyListContainer';
 import Loader from './common/Loader';
 import Error from './common/Error';
+import { PropertyI } from '../types';
 import styles from './PropertyPage.module.css';
 
-interface IState {
+interface State {
   propertyFilter: string;
-  propertyList: Array<any>;
+  propertyList: PropertyI[];
   propertyStatus: string;
 }
 
-class PropertyPage extends Component<any, IState> {
+class PropertyPage extends Component<any, State> {
   constructor(props: any) {
     super(props);
     this.state = {
       propertyFilter: 'default',
       propertyList: [],
-      propertyStatus: 'initial', // initial, loading, done, error
+      propertyStatus: 'initial' // initial, loading, done, error
     };
   }
 
-  async componentDidMount() {
+  async componentDidMount(): Promise<any> {
     try {
       this.setState({ propertyStatus: 'loading' });
-      const response = await fetch('https://code-challenge.activepipe.com/challenge/properties');
+      const response = await fetch(
+        'https://code-challenge.activepipe.com/challenge/properties'
+      );
       const dataInJson = await response.json();
       this.setState({ propertyStatus: 'done' });
       this.setState({ propertyList: dataInJson });
@@ -34,13 +37,13 @@ class PropertyPage extends Component<any, IState> {
     }
   }
 
-  changeFilter = (event: ChangeEvent<HTMLSelectElement>) => {
+  changeFilter = (event: ChangeEvent<HTMLSelectElement>): void => {
     this.setState({
-      propertyFilter: event.target.value,
+      propertyFilter: event.target.value
     });
-  }
+  };
 
-  renderLoader() {
+  renderLoader(): JSX.Element {
     return (
       <div className={styles.loaderContainer}>
         <Loader />
@@ -48,7 +51,7 @@ class PropertyPage extends Component<any, IState> {
     );
   }
 
-  renderErrorMsg() {
+  renderErrorMsg(): JSX.Element {
     return (
       <div className={styles.msgContainer}>
         <Error />
@@ -56,22 +59,27 @@ class PropertyPage extends Component<any, IState> {
     );
   }
 
-  renderMainContent() {
+  renderMainContent(): JSX.Element {
     let filteredPropertyList = [];
     if (this.state.propertyFilter !== 'default') {
-      filteredPropertyList = this.state.propertyList.filter(p => p.status === this.state.propertyFilter);
+      filteredPropertyList = this.state.propertyList.filter(
+        (p): boolean => p.status === this.state.propertyFilter
+      );
     } else {
       filteredPropertyList = this.state.propertyList;
     }
     return (
       <React.Fragment>
-        <HeaderContainer propertyFilter={this.state.propertyFilter} changeFilter={this.changeFilter} />
+        <HeaderContainer
+          propertyFilter={this.state.propertyFilter}
+          changeFilter={this.changeFilter}
+        />
         <PropertyListContainer propertyList={filteredPropertyList} />
       </React.Fragment>
-    )
+    );
   }
 
-  render() {
+  render(): JSX.Element {
     let content = null;
     if (this.state.propertyStatus === 'loading') {
       content = this.renderLoader();
@@ -80,11 +88,7 @@ class PropertyPage extends Component<any, IState> {
     } else {
       content = this.renderMainContent();
     }
-    return (
-      <div className={styles.propertyPage}>
-        {content}
-      </div>
-    );
+    return <div className={styles.propertyPage}>{content}</div>;
   }
 }
 

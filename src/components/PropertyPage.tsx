@@ -6,35 +6,25 @@ import Error from './common/Error';
 import { PropertyI } from '../types';
 import styles from './PropertyPage.module.css';
 
+interface Props {
+  propertyFilter: string;
+  propertyList: PropertyI[];
+  propertyListStatus: string;
+  fetchPropertiesStart: () => void;
+  fetchPropertiesDone: () => void;
+  fetchPropertiesError: () => void;
+}
+
 interface State {
   propertyFilter: string;
   propertyList: PropertyI[];
   propertyStatus: string;
 }
 
-class PropertyPage extends Component<any, State> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      propertyFilter: 'default',
-      propertyList: [],
-      propertyStatus: 'initial' // initial, loading, done, error
-    };
-  }
-
-  async componentDidMount(): Promise<any> {
-    try {
-      this.setState({ propertyStatus: 'loading' });
-      const response = await fetch(
-        'https://code-challenge.activepipe.com/challenge/properties'
-      );
-      const dataInJson = await response.json();
-      this.setState({ propertyStatus: 'done' });
-      this.setState({ propertyList: dataInJson });
-    } catch (e) {
-      console.warn(e);
-      this.setState({ propertyStatus: 'error' });
-    }
+class PropertyPage extends Component<Props, State> {
+  componentDidMount(): void {
+    const { fetchPropertiesStart } = this.props;
+    fetchPropertiesStart();
   }
 
   changeFilter = (event: ChangeEvent<HTMLSelectElement>): void => {
@@ -60,18 +50,19 @@ class PropertyPage extends Component<any, State> {
   }
 
   renderMainContent(): JSX.Element {
+    const { propertyFilter, propertyList } = this.props;
     let filteredPropertyList = [];
-    if (this.state.propertyFilter !== 'default') {
-      filteredPropertyList = this.state.propertyList.filter(
-        (p): boolean => p.status === this.state.propertyFilter
+    if (propertyFilter !== 'default') {
+      filteredPropertyList = propertyList.filter(
+        p => p.status === propertyFilter
       );
     } else {
-      filteredPropertyList = this.state.propertyList;
+      filteredPropertyList = propertyList;
     }
     return (
       <React.Fragment>
         <HeaderContainer
-          propertyFilter={this.state.propertyFilter}
+          propertyFilter={propertyFilter}
           changeFilter={this.changeFilter}
         />
         <PropertyListContainer propertyList={filteredPropertyList} />
@@ -80,10 +71,11 @@ class PropertyPage extends Component<any, State> {
   }
 
   render(): JSX.Element {
+    const { propertyListStatus } = this.props;
     let content = null;
-    if (this.state.propertyStatus === 'loading') {
+    if (propertyListStatus === 'loading') {
       content = this.renderLoader();
-    } else if (this.state.propertyStatus === 'error') {
+    } else if (propertyListStatus === 'error') {
       content = this.renderErrorMsg();
     } else {
       content = this.renderMainContent();

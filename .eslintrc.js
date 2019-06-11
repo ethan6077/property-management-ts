@@ -5,6 +5,10 @@ module.exports = {
     "rules": {
         '@typescript-eslint/indent': ['error', 2],
         "@typescript-eslint/explicit-member-accessibility": 0,
+        '@typescript-eslint/explicit-function-return-type': ['warn', { 
+            allowExpressions: true, 
+            allowTypedFunctionExpressions: true
+          }],
         "prettier/prettier": ["error", { "singleQuote": true }]
     }
 };

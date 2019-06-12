@@ -9,7 +9,7 @@ import {
 export const initialState = {
   propertyFilter: 'default',
   propertyList: [],
-  propertyListStatus: 'initial',
+  propertyListStatus: 'initial'
 };
 
 export function propertiesReducer(
@@ -23,9 +23,11 @@ export function propertiesReducer(
         propertyListStatus: 'loading'
       };
     case FETCH_PROPERTIES_DONE:
+      const properties = action.payload;
       return {
         ...state,
-        propertyListStatus: 'done'
+        propertyListStatus: 'done',
+        propertyList: properties
       };
     case FETCH_PROPERTIES_ERROR:
       return {

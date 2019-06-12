@@ -10,9 +10,7 @@ interface Props {
   propertyFilter: string;
   propertyList: PropertyI[];
   propertyListStatus: string;
-  fetchPropertiesStart: () => void;
-  fetchPropertiesDone: () => void;
-  fetchPropertiesError: () => void;
+  fetchProperties: () => void;
 }
 
 interface State {
@@ -23,8 +21,8 @@ interface State {
 
 class PropertyPage extends Component<Props, State> {
   componentDidMount(): void {
-    const { fetchPropertiesStart } = this.props;
-    fetchPropertiesStart();
+    const { fetchProperties } = this.props;
+    fetchProperties();
   }
 
   changeFilter = (event: ChangeEvent<HTMLSelectElement>): void => {

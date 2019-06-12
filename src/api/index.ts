@@ -1,14 +1,3 @@
-import { PropertyI } from '../types';
+const BaseUrl = 'https://code-challenge.activepipe.com';
 
-export async function fetchPropertiesList(): Promise<PropertyI[]> {
-  try {
-    const response = await fetch(
-      'https://code-challenge.activepipe.com/challenge/properties'
-    );
-    const dataInJson = await response.json();
-    return dataInJson;
-  } catch (e) {
-    console.warn(e);
-    return [];
-  }
-}
+export const PropertyListUrl = new URL('/challenge/properties', BaseUrl);

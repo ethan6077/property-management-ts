@@ -1,5 +1,5 @@
 import { StoreStateI } from '../types';
-import { PropertyActions } from '../actions';
+import { PropertyActionsT } from '../actions';
 import {
   FETCH_PROPERTIES_START,
   FETCH_PROPERTIES_DONE,
@@ -14,7 +14,7 @@ export const initialState = {
 
 export function propertiesReducer(
   state: StoreStateI = initialState,
-  action: PropertyActions
+  action: PropertyActionsT
 ): StoreStateI {
   switch (action.type) {
     case FETCH_PROPERTIES_START:

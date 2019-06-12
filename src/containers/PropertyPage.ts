@@ -19,18 +19,12 @@ function mapStateToProps(state: StoreStateI): StateProps {
 }
 
 interface DispatchProps {
-  fetchPropertiesStart: () => void;
-  fetchPropertiesDone: () => void;
-  fetchPropertiesError: () => void;
+  fetchProperties: () => void;
 }
 
-function mapDispatchToProps(
-  dispatch: Dispatch<actions.PropertyActions>
-): DispatchProps {
+function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   return {
-    fetchPropertiesStart: () => dispatch(actions.fetchPropertiesStart()),
-    fetchPropertiesDone: () => dispatch(actions.fetchPropertiesDone()),
-    fetchPropertiesError: () => dispatch(actions.fetchPropertiesError())
+    fetchProperties: () => dispatch(actions.fetchProperties())
   };
 }
 

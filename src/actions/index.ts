@@ -1,4 +1,7 @@
+import { Dispatch } from 'redux';
 import * as constants from '../constants';
+import * as api from '../api';
+import { PropertyI } from '../types';
 
 interface FetchPropertiesStartI {
   type: constants.FETCH_PROPERTIES_START;
@@ -12,11 +15,15 @@ export function fetchPropertiesStart(): FetchPropertiesStartI {
 
 interface FetchPropertiesDoneI {
   type: constants.FETCH_PROPERTIES_DONE;
+  payload: PropertyI[];
 }
 
-export function fetchPropertiesDone(): FetchPropertiesDoneI {
+export function fetchPropertiesDone(
+  properties: PropertyI[]
+): FetchPropertiesDoneI {
   return {
-    type: constants.FETCH_PROPERTIES_DONE
+    type: constants.FETCH_PROPERTIES_DONE,
+    payload: properties
   };
 }
 
@@ -30,7 +37,19 @@ export function fetchPropertiesError(): FetchPropertiesErrorI {
   };
 }
 
-export type PropertyActions =
-  | FetchPropertiesStartI
-  | FetchPropertiesDoneI
-  | FetchPropertiesErrorI;
+// eslint-disable-next-line prettier/prettier
+export type PropertyActionsT = FetchPropertiesStartI | FetchPropertiesDoneI | FetchPropertiesErrorI;
+
+export function fetchProperties(): any {
+  return async (dispatch: Dispatch) => {
+    dispatch(fetchPropertiesStart());
+    try {
+      const response = await fetch(api.PropertyListUrl.toString());
+      const dataInJson = await response.json();
+      dispatch(fetchPropertiesDone(dataInJson));
+    } catch (e) {
+      console.warn(e);
+      dispatch(fetchPropertiesError());
+    }
+  };
+}

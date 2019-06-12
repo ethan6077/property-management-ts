@@ -37,9 +37,6 @@ export function fetchPropertiesError(): FetchPropertiesErrorI {
   };
 }
 
-// eslint-disable-next-line prettier/prettier
-export type PropertyActionsT = FetchPropertiesStartI | FetchPropertiesDoneI | FetchPropertiesErrorI;
-
 export function fetchProperties(): any {
   return async (dispatch: Dispatch) => {
     dispatch(fetchPropertiesStart());
@@ -53,3 +50,8 @@ export function fetchProperties(): any {
     }
   };
 }
+
+export type PropertyActionsT =
+  | FetchPropertiesStartI
+  | FetchPropertiesDoneI
+  | FetchPropertiesErrorI;

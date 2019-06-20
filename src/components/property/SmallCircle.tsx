@@ -12,10 +12,10 @@ function SmallCircle(props: Props): JSX.Element {
   return (
     <span
       className={classNames({
-        [styles.current]: status === 'current',
-        [styles.sold]: status === 'sold',
-        [styles.offMarket]: status === 'off_market',
-        [styles.withDrawn]: status === 'withdrawn'
+        [styles.current]: status === PropertyStatusE.Current,
+        [styles.sold]: status === PropertyStatusE.Sold,
+        [styles.offMarket]: status === PropertyStatusE.OffMarket,
+        [styles.withDrawn]: status === PropertyStatusE.WithDrawn
       })}
     ></span>
   );

@@ -1,8 +1,7 @@
-export enum PropertyStatusE {
-  Current = 'current',
-  Sold = 'sold',
-  WithDrawn = 'withdrawn',
-  OffMarket = 'off_market'
+export interface StoreStateI {
+  propertyFilter: string;
+  propertyList: PropertyI[];
+  propertyListStatus: string;
 }
 
 export interface AddressI {
@@ -23,8 +22,13 @@ export interface PropertyI {
   postcode: string;
 }
 
-export interface StoreStateI {
-  propertyFilter: string;
-  propertyList: PropertyI[];
-  propertyListStatus: string;
+export enum PropertyStatusE {
+  Current = 'current',
+  Sold = 'sold',
+  WithDrawn = 'withdrawn',
+  OffMarket = 'off_market'
 }
+
+export type PropertyFilterT = PropertyStatusE | 'all';
+
+export type PropertyFilterTupleArrayT = [PropertyFilterT, string][];

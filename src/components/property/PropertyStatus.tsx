@@ -1,6 +1,6 @@
 import React from 'react';
 import SmallCircle from './SmallCircle';
-import StatusMap from '../header/StatusMap';
+import PropertyFilterTupleArray from '../../util/PropertyFilterTupleArray';
 import styles from './PropertyStatus.module.css';
 import { PropertyStatusE } from '../../types';
 
@@ -10,7 +10,13 @@ interface Props {
 
 function PropertyStatus(props: Props): JSX.Element {
   const { status } = props;
-  const statusValue = StatusMap.get(status);
+  const statusTuple = PropertyFilterTupleArray.find(
+    filter => filter[0] === status
+  );
+  let statusValue = '';
+  if (statusTuple) {
+    statusValue = statusTuple[1];
+  }
   return (
     <div>
       <span className={styles.text}>{statusValue}</span>

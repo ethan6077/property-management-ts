@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import PropertyStatus from './PropertyStatus';
 import SmallCircle from './SmallCircle';
-import StatusMap from '../header/StatusMap';
 import { PropertyStatusE } from '../../types';
 
 it('renders without crashing', (): void => {
@@ -31,16 +30,12 @@ it('Status Value change according to property status', (): void => {
     const propertyStatusWrapper = shallow(
       <PropertyStatus status={PropertyStatusE.Current} />
     );
-    expect(propertyStatusWrapper.find('span').text()).toBe(
-      StatusMap.get('current')
-    );
+    expect(propertyStatusWrapper.find('span').text()).toBe('Current');
   });
   describe('property status - sold', (): void => {
     const propertyStatusWrapper = shallow(
       <PropertyStatus status={PropertyStatusE.Sold} />
     );
-    expect(propertyStatusWrapper.find('span').text()).toBe(
-      StatusMap.get('sold')
-    );
+    expect(propertyStatusWrapper.find('span').text()).toBe('Sold');
   });
 });

@@ -1,5 +1,4 @@
 import React, { ChangeEvent } from 'react';
-import StatusMap from './StatusMap';
 import styles from './HeaderContainer.module.css';
 
 interface Props {
@@ -9,7 +8,7 @@ interface Props {
 
 function HeaderContainer(props: Props): JSX.Element {
   const { propertyFilter, changeFilter } = props;
-  const statusArray = Array.from(StatusMap.keys());
+  const statusArray = [];
   return (
     <div className={styles.headerContainer}>
       <select
@@ -24,7 +23,7 @@ function HeaderContainer(props: Props): JSX.Element {
           (statusKey): JSX.Element => {
             return (
               <option key={statusKey} value={statusKey}>
-                {StatusMap.get(statusKey)}
+                {statusKey}
               </option>
             );
           }

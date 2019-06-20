@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
 interface Props {
   propertyFilter: string;
-  changeFilter: (event: ChangeEvent<HTMLSelectElement>) => void;
+  changePropertyFilter: (event: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-function PropertyStatusSelect(props): JSX.Element {
+function PropertyStatusSelect(props: Props): JSX.Element {
   return null;
 }
 

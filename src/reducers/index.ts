@@ -3,7 +3,8 @@ import { PropertyActionsT } from '../actions';
 import {
   FETCH_PROPERTIES_START,
   FETCH_PROPERTIES_DONE,
-  FETCH_PROPERTIES_ERROR
+  FETCH_PROPERTIES_ERROR,
+  CHANGE_PROPERTY_FILTER
 } from '../constants';
 
 export const initialState = {
@@ -33,6 +34,11 @@ export function propertiesReducer(
       return {
         ...state,
         propertyListStatus: 'error'
+      };
+    case CHANGE_PROPERTY_FILTER:
+      return {
+        ...state,
+        propertyFilter: action.payload
       };
   }
   return state;

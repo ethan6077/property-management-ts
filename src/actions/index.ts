@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 import * as constants from '../constants';
 import * as api from '../api';
-import { PropertyI } from '../types';
+import { PropertyI, PropertyStatusE } from '../types';
 
 interface FetchPropertiesStartI {
   type: constants.FETCH_PROPERTIES_START;
@@ -51,7 +51,22 @@ export function fetchProperties(): any {
   };
 }
 
+interface ChangePropertyFilterI {
+  type: constants.CHANGE_PROPERTY_FILTER;
+  payload: PropertyStatusE | 'ALL';
+}
+
+export function changePropertyFilter(
+  filter: PropertyStatusE | 'ALL'
+): ChangePropertyFilterI {
+  return {
+    type: constants.CHANGE_PROPERTY_FILTER,
+    payload: filter
+  };
+}
+
 export type PropertyActionsT =
   | FetchPropertiesStartI
   | FetchPropertiesDoneI
-  | FetchPropertiesErrorI;
+  | FetchPropertiesErrorI
+  | ChangePropertyFilterI;

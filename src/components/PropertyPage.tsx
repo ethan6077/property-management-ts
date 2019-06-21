@@ -1,6 +1,6 @@
-import React, { Component, ChangeEvent } from 'react';
-import HeaderContainer from './header/HeaderContainer';
-import PropertyListContainer from './properties/PropertyListContainer';
+import React, { Component } from 'react';
+import HeaderBar from './header/HeaderBar';
+import PropertyListWrapper from './properties/PropertyListWrapper';
 import Loader from './common/Loader';
 import Error from './common/Error';
 import { PropertyI } from '../types';
@@ -13,23 +13,11 @@ interface Props {
   fetchProperties: () => void;
 }
 
-interface State {
-  propertyFilter: string;
-  propertyList: PropertyI[];
-  propertyStatus: string;
-}
-
-class PropertyPage extends Component<Props, State> {
+class PropertyPage extends Component<Props> {
   componentDidMount(): void {
     const { fetchProperties } = this.props;
     fetchProperties();
   }
-
-  changeFilter = (event: ChangeEvent<HTMLSelectElement>): void => {
-    this.setState({
-      propertyFilter: event.target.value
-    });
-  };
 
   renderLoader(): JSX.Element {
     return (
@@ -59,11 +47,8 @@ class PropertyPage extends Component<Props, State> {
     }
     return (
       <React.Fragment>
-        <HeaderContainer
-          propertyFilter={propertyFilter}
-          changeFilter={this.changeFilter}
-        />
-        <PropertyListContainer propertyList={filteredPropertyList} />
+        <HeaderBar />
+        <PropertyListWrapper propertyList={filteredPropertyList} />
       </React.Fragment>
     );
   }

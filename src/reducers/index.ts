@@ -1,4 +1,4 @@
-import { StoreStateI } from '../types';
+import { StoreStateI, FilterDefaultE, PropertyFilterT } from '../types';
 import { PropertyActionsT } from '../actions';
 import {
   FETCH_PROPERTIES_START,
@@ -8,7 +8,7 @@ import {
 } from '../constants';
 
 export const initialState = {
-  propertyFilter: 'default',
+  propertyFilter: FilterDefaultE.All,
   propertyList: [],
   propertyListStatus: 'initial'
 };
@@ -38,7 +38,7 @@ export function propertiesReducer(
     case CHANGE_PROPERTY_FILTER:
       return {
         ...state,
-        propertyFilter: action.payload
+        propertyFilter: action.payload as PropertyFilterT
       };
   }
   return state;

@@ -1,5 +1,5 @@
 export interface StoreStateI {
-  propertyFilter: string;
+  propertyFilter: PropertyFilterT;
   propertyList: PropertyI[];
   propertyListStatus: string;
 }
@@ -29,6 +29,10 @@ export enum PropertyStatusE {
   OffMarket = 'off_market'
 }
 
-export type PropertyFilterT = PropertyStatusE | 'all';
+export enum FilterDefaultE {
+  All = 'all'
+}
+
+export type PropertyFilterT = PropertyStatusE | FilterDefaultE;
 
 export type PropertyFilterTupleArrayT = [PropertyFilterT, string][];

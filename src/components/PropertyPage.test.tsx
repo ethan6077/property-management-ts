@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import PropertyPage from './PropertyPage';
-import HeaderContainer from './header/HeaderContainer';
-import PropertyListContainer from './properties/PropertyListContainer';
+import HeaderBar from './header/HeaderBar';
+import PropertyListWrapper from './properties/PropertyListWrapper';
 import Loader from './common/Loader';
 import Error from './common/Error';
 import { PropertyStatusE } from '../types';
@@ -76,8 +76,8 @@ it('renders HeaderContainer and PropertyListContainer when propertyStatus is don
       disableLifecycleMethods: true
     }
   );
-  expect(propertyPageWrapper.find(HeaderContainer)).toHaveLength(1);
-  expect(propertyPageWrapper.find(PropertyListContainer)).toHaveLength(1);
+  expect(propertyPageWrapper.find(HeaderBar)).toHaveLength(1);
+  expect(propertyPageWrapper.find(PropertyListWrapper)).toHaveLength(1);
 });
 
 it('renders filtered propertyList when propertyFilter is set', (): void => {
@@ -126,14 +126,14 @@ it('renders filtered propertyList when propertyFilter is set', (): void => {
       disableLifecycleMethods: true
     }
   );
-  expect(propertyPageWrapper.find(PropertyListContainer)).toHaveLength(1);
+  expect(propertyPageWrapper.find(PropertyListWrapper)).toHaveLength(1);
   // by default, list all the properties
   expect(
-    propertyPageWrapper.find(PropertyListContainer).props().propertyList
+    propertyPageWrapper.find(PropertyListWrapper).props().propertyList
   ).toHaveLength(3);
   // after set the filter, only available properties will be listed
   propertyPageWrapper.setProps({ propertyFilter: PropertyStatusE.Current });
   expect(
-    propertyPageWrapper.find(PropertyListContainer).props().propertyList
+    propertyPageWrapper.find(PropertyListWrapper).props().propertyList
   ).toHaveLength(2);
 });

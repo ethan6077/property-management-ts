@@ -1,7 +1,11 @@
-import { PropertyFilterTupleArrayT, PropertyStatusE } from '../types';
+import {
+  PropertyFilterTupleArrayT,
+  PropertyStatusE,
+  FilterDefaultE
+} from '../types';
 
 const PropertyFilterTupleArray: PropertyFilterTupleArrayT = [
-  ['all', 'ALL'],
+  [FilterDefaultE.All, 'ALL'],
   [PropertyStatusE.Current, 'Current'],
   [PropertyStatusE.Sold, 'Sold'],
   [PropertyStatusE.WithDrawn, 'With Drawn'],

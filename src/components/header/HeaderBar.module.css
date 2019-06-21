@@ -1,11 +1,11 @@
-.headerContainer {
+.headerBar {
   height: 80px;
   background-color: #30363f;
   position: fixed;
   width: 100%;
 }
 
-.headerSelect {
+.headerBar select {
   position: absolute;
   top: 30px;
   right: 100px;

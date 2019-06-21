@@ -49,6 +49,6 @@ it('changePropertyFilter function should be called when select value changes', (
       changePropertyFilter={changePropertyFilterFn}
     />
   );
-  wrapper.find('select').simulate('change', { value: 'sold' });
+  wrapper.find('select').simulate('change', { target: { value: 'sold' } });
   expect(changePropertyFilterFn).toBeCalledTimes(1);
 });

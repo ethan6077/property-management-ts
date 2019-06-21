@@ -15,12 +15,13 @@ function mapStateToProps(state: StoreStateI): StateProps {
 }
 
 interface DispatchProps {
-  changePropertyFilter: () => void;
+  changePropertyFilter: (filter: PropertyFilterT) => any;
 }
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   return {
-    changePropertyFilter: () => dispatch(actions.fetchProperties())
+    changePropertyFilter: (filter: PropertyFilterT) =>
+      dispatch(actions.changePropertyFilter(filter))
   };
 }
 

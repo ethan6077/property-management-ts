@@ -10,7 +10,7 @@ import { PropertyStatusE } from '../types';
 it('renders without crashing', (): void => {
   shallow(
     <PropertyPage
-      propertyFilter="default"
+      propertyFilter="all"
       propertyList={[]}
       propertyListStatus="initial"
       fetchProperties={() => {}}
@@ -21,7 +21,7 @@ it('renders without crashing', (): void => {
 it('renders nothing when propertyStatus is initial', (): void => {
   const propertyPageWrapper = shallow(
     <PropertyPage
-      propertyFilter="default"
+      propertyFilter="all"
       propertyList={[]}
       propertyListStatus="initial"
       fetchProperties={() => {}}
@@ -37,7 +37,7 @@ it('renders nothing when propertyStatus is initial', (): void => {
 it('renders Loader when propertyStatus is loading', (): void => {
   const propertyPageWrapper = shallow(
     <PropertyPage
-      propertyFilter="default"
+      propertyFilter="all"
       propertyList={[]}
       propertyListStatus="loading"
       fetchProperties={() => {}}
@@ -52,7 +52,7 @@ it('renders Loader when propertyStatus is loading', (): void => {
 it('renders Error when propertyStatus is error', (): void => {
   const propertyPageWrapper = shallow(
     <PropertyPage
-      propertyFilter="default"
+      propertyFilter="all"
       propertyList={[]}
       propertyListStatus="error"
       fetchProperties={() => {}}
@@ -67,7 +67,7 @@ it('renders Error when propertyStatus is error', (): void => {
 it('renders HeaderContainer and PropertyListContainer when propertyStatus is done', (): void => {
   const propertyPageWrapper = shallow(
     <PropertyPage
-      propertyFilter="default"
+      propertyFilter="all"
       propertyList={[]}
       propertyListStatus="done"
       fetchProperties={() => {}}
@@ -83,7 +83,7 @@ it('renders HeaderContainer and PropertyListContainer when propertyStatus is don
 it('renders filtered propertyList when propertyFilter is set', (): void => {
   const propertyPageWrapper = shallow(
     <PropertyPage
-      propertyFilter="default"
+      propertyFilter="all"
       propertyList={[
         {
           id: 1,

@@ -3,7 +3,7 @@ import HeaderBar from './header/HeaderBar';
 import PropertyListWrapper from './properties/PropertyListWrapper';
 import Loader from './common/Loader';
 import Error from './common/Error';
-import { PropertyI } from '../types';
+import { PropertyI, FilterDefaultE } from '../types';
 import styles from './PropertyPage.module.css';
 
 interface Props {
@@ -38,7 +38,7 @@ class PropertyPage extends Component<Props> {
   renderMainContent(): JSX.Element {
     const { propertyFilter, propertyList } = this.props;
     let filteredPropertyList = [];
-    if (propertyFilter !== 'default') {
+    if (propertyFilter !== FilterDefaultE.All) {
       filteredPropertyList = propertyList.filter(
         p => p.status === propertyFilter
       );

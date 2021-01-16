@@ -1,9 +1,9 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import store from './store';
-import PropertyPage from './containers/PropertyPage';
+import React, { FC } from "react";
+import { Provider } from "react-redux";
+import store from "./store";
+import PropertyPage from "./containers/PropertyPage";
 
-const App = (): JSX.Element => {
+const App: FC = () => {
   return (
     <Provider store={store}>
       <PropertyPage />

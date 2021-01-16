@@ -1,8 +1,6 @@
-import React from 'react';
-import styles from './Loader.module.css';
+import React, { FC } from "react";
+import styles from "./Loader.module.css";
 
-function Loader(): JSX.Element {
-  return <div className={styles.ldsDualRing}></div>;
-}
+const Loader: FC = () => <div className={styles.ldsDualRing} />;
 
 export default Loader;

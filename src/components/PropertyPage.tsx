@@ -1,25 +1,28 @@
-import React, { Component } from 'react';
-import HeaderBar from './header/HeaderBar';
-import PropertyListWrapper from './properties/PropertyListWrapper';
-import Loader from './common/Loader';
-import Error from './common/Error';
-import { PropertyI, FilterDefaultE } from '../types';
-import styles from './PropertyPage.module.css';
-
-interface Props {
+import React, { FC, useEffect } from "react";
+import HeaderBar from "./header/HeaderBar";
+import PropertyListWrapper from "./properties/PropertyListWrapper";
+import Loader from "./common/Loader";
+import Error from "./common/Error";
+import { PropertyI, FilterDefaultE } from "../types";
+import styles from "./PropertyPage.module.css";
+interface PropertyPageProps {
   propertyFilter: string;
   propertyList: PropertyI[];
   propertyListStatus: string;
   fetchProperties: () => void;
 }
 
-class PropertyPage extends Component<Props> {
-  componentDidMount(): void {
-    const { fetchProperties } = this.props;
+const PropertyPage: FC<PropertyPageProps> = ({
+  propertyListStatus,
+  propertyFilter,
+  propertyList,
+  fetchProperties
+}) => {
+  useEffect(() => {
     fetchProperties();
-  }
+  }, [fetchProperties]);
 
-  renderLoader(): JSX.Element {
+  if (propertyListStatus === "loading") {
     return (
       <div className={styles.loaderContainer}>
         <Loader />
@@ -27,7 +30,7 @@ class PropertyPage extends Component<Props> {
     );
   }
 
-  renderErrorMsg(): JSX.Element {
+  if (propertyListStatus === "error") {
     return (
       <div className={styles.msgContainer}>
         <Error />
@@ -35,36 +38,17 @@ class PropertyPage extends Component<Props> {
     );
   }
 
-  renderMainContent(): JSX.Element {
-    const { propertyFilter, propertyList } = this.props;
-    let filteredPropertyList = [];
-    if (propertyFilter !== FilterDefaultE.All) {
-      filteredPropertyList = propertyList.filter(
-        p => p.status === propertyFilter
-      );
-    } else {
-      filteredPropertyList = propertyList;
-    }
-    return (
-      <React.Fragment>
-        <HeaderBar />
-        <PropertyListWrapper propertyList={filteredPropertyList} />
-      </React.Fragment>
-    );
-  }
+  const filteredPropertyList =
+    propertyFilter === FilterDefaultE.All
+      ? propertyList
+      : propertyList.filter(p => p.status === propertyFilter);
 
-  render(): JSX.Element {
-    const { propertyListStatus } = this.props;
-    let content = null;
-    if (propertyListStatus === 'loading') {
-      content = this.renderLoader();
-    } else if (propertyListStatus === 'error') {
-      content = this.renderErrorMsg();
-    } else {
-      content = this.renderMainContent();
-    }
-    return <div className={styles.propertyPage}>{content}</div>;
-  }
-}
+  return (
+    <div className={styles.propertyPage}>
+      <HeaderBar />
+      <PropertyListWrapper propertyList={filteredPropertyList} />
+    </div>
+  );
+};
 
 export default PropertyPage;

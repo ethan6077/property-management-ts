@@ -15,9 +15,6 @@ const PropertyStatusSelect: FC<PropertyStatusSelectProps> = ({
     value={propertyFilter}
     onChange={e => onPropertyFilterChanged(e.target.value as PropertyFilterT)}
   >
-    <option key={"all"} value="all">
-      Filter Status
-    </option>
     {PropertyFilterTupleArray.map(statusTuple => (
       <option key={statusTuple[0]} value={statusTuple[0]}>
         {statusTuple[1]}

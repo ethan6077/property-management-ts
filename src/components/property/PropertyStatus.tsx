@@ -1,28 +1,25 @@
-import React from 'react';
-import SmallCircle from './SmallCircle';
-import PropertyFilterTupleArray from '../../util/PropertyFilterTupleArray';
-import styles from './PropertyStatus.module.css';
-import { PropertyStatusE } from '../../types';
+import React, { FC } from "react";
+import SmallCircle from "./SmallCircle";
+import PropertyFilterTupleArray from "../../util/PropertyFilterTupleArray";
+import styles from "./PropertyStatus.module.css";
+import { PropertyStatusE } from "../../types";
 
-interface Props {
+interface PropertyStatusProps {
   status: PropertyStatusE;
 }
 
-function PropertyStatus(props: Props): JSX.Element {
-  const { status } = props;
+const PropertyStatus: FC<PropertyStatusProps> = ({ status }) => {
   const statusTuple = PropertyFilterTupleArray.find(
     filter => filter[0] === status
   );
-  let statusValue = '';
-  if (statusTuple) {
-    statusValue = statusTuple[1];
-  }
+  const statusValue = statusTuple ? statusTuple[1] : "";
+
   return (
     <div>
       <span className={styles.text}>{statusValue}</span>
       <SmallCircle status={status} />
     </div>
   );
-}
+};
 
 export default PropertyStatus;

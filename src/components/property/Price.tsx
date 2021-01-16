@@ -1,14 +1,14 @@
-import React from 'react';
-import numeral from 'numeral';
+import React, { FC } from "react";
+import numeral from "numeral";
 
-interface Props {
+interface PriceProps {
   price: number;
 }
 
-function Price(props: Props): JSX.Element {
-  const { price } = props;
-  const priceStr = numeral(price).format('$0,0');
+const Price: FC<PriceProps> = ({ price }) => {
+  const priceStr = numeral(price).format("$0,0");
+
   return <div>{priceStr}</div>;
-}
+};
 
 export default Price;

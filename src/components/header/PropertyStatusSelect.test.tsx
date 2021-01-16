@@ -1,54 +1,54 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import PropertyStatusSelect from './PropertyStatusSelect';
+import React from "react";
+import { shallow } from "enzyme";
+import PropertyStatusSelect from "./PropertyStatusSelect";
 
-it('renders without crashing', (): void => {
+it("renders without crashing", (): void => {
   shallow(
     <PropertyStatusSelect
       propertyFilter="ALL"
-      changePropertyFilter={() => {}}
+      onPropertyFilterChanged={() => {}}
     />
   );
 });
 
-it('select element renders the right value of the property filter - ALL', (): void => {
+it("select element renders the right value of the property filter - ALL", (): void => {
   const wrapper = shallow(
     <PropertyStatusSelect
       propertyFilter="ALL"
-      changePropertyFilter={() => {}}
+      onPropertyFilterChanged={() => {}}
     />
   );
-  expect(wrapper.find('select').props().value).toBe('ALL');
+  expect(wrapper.find("select").props().value).toBe("ALL");
 });
 
-it('select element renders the right value of the property filter - Current', (): void => {
+it("select element renders the right value of the property filter - Current", (): void => {
   const wrapper = shallow(
     <PropertyStatusSelect
       propertyFilter="current"
-      changePropertyFilter={() => {}}
+      onPropertyFilterChanged={() => {}}
     />
   );
-  expect(wrapper.find('select').props().value).toBe('current');
+  expect(wrapper.find("select").props().value).toBe("current");
 });
 
-it('select element renders the right value of the property filter - Sold', (): void => {
+it("select element renders the right value of the property filter - Sold", (): void => {
   const wrapper = shallow(
     <PropertyStatusSelect
       propertyFilter="sold"
-      changePropertyFilter={() => {}}
+      onPropertyFilterChanged={() => {}}
     />
   );
-  expect(wrapper.find('select').props().value).toBe('sold');
+  expect(wrapper.find("select").props().value).toBe("sold");
 });
 
-it('changePropertyFilter function should be called when select value changes', (): void => {
+it("changePropertyFilter function should be called when select value changes", (): void => {
   const changePropertyFilterFn = jest.fn();
   const wrapper = shallow(
     <PropertyStatusSelect
       propertyFilter="all"
-      changePropertyFilter={changePropertyFilterFn}
+      onPropertyFilterChanged={changePropertyFilterFn}
     />
   );
-  wrapper.find('select').simulate('change', { target: { value: 'sold' } });
+  wrapper.find("select").simulate("change", { target: { value: "sold" } });
   expect(changePropertyFilterFn).toBeCalledTimes(1);
 });

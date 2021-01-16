@@ -1,40 +1,29 @@
-import React, { ChangeEvent } from 'react';
-import PropertyFilterTupleArray from '../../util/PropertyFilterTupleArray';
-import { PropertyFilterT } from '../../types';
+import React, { FC } from "react";
+import PropertyFilterTupleArray from "../../util/PropertyFilterTupleArray";
+import { PropertyFilterT } from "../../types";
 
-interface Props {
+interface PropertyStatusSelectProps {
   propertyFilter: string;
-  changePropertyFilter: (filer: PropertyFilterT) => any;
+  onPropertyFilterChanged: (filer: PropertyFilterT) => void;
 }
 
-function handleChange(
-  event: ChangeEvent<HTMLSelectElement>,
-  changePropertyFilter: (filer: PropertyFilterT) => any
-): void {
-  changePropertyFilter(event.target.value as PropertyFilterT);
-}
-
-function PropertyStatusSelect(props: Props): JSX.Element {
-  const { propertyFilter, changePropertyFilter } = props;
-  return (
-    <select
-      value={propertyFilter}
-      onChange={e => handleChange(e, changePropertyFilter)}
-    >
-      <option key={'all'} value="all">
-        Filter Status
+const PropertyStatusSelect: FC<PropertyStatusSelectProps> = ({
+  propertyFilter,
+  onPropertyFilterChanged
+}) => (
+  <select
+    value={propertyFilter}
+    onChange={e => onPropertyFilterChanged(e.target.value as PropertyFilterT)}
+  >
+    <option key={"all"} value="all">
+      Filter Status
+    </option>
+    {PropertyFilterTupleArray.map(statusTuple => (
+      <option key={statusTuple[0]} value={statusTuple[0]}>
+        {statusTuple[1]}
       </option>
-      {PropertyFilterTupleArray.map(
-        (statusTuple): JSX.Element => {
-          return (
-            <option key={statusTuple[0]} value={statusTuple[0]}>
-              {statusTuple[1]}
-            </option>
-          );
-        }
-      )}
-    </select>
-  );
-}
+    ))}
+  </select>
+);
 
 export default PropertyStatusSelect;

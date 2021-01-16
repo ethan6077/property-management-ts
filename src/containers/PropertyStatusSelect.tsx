@@ -1,8 +1,8 @@
-import { Dispatch } from 'redux';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
-import { StoreStateI, PropertyFilterT } from '../types';
-import PropertyStatusSelect from '../components/header/PropertyStatusSelect';
+import { Dispatch } from "redux";
+import { connect } from "react-redux";
+import * as actions from "../actions";
+import { StoreStateI, PropertyFilterT } from "../types";
+import PropertyStatusSelect from "../components/header/PropertyStatusSelect";
 
 interface StateProps {
   propertyFilter: PropertyFilterT;
@@ -14,14 +14,11 @@ function mapStateToProps(state: StoreStateI): StateProps {
   };
 }
 
-interface DispatchProps {
-  changePropertyFilter: (filter: PropertyFilterT) => any;
-}
-
-function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
+function mapDispatchToProps(dispatch: Dispatch) {
   return {
-    changePropertyFilter: (filter: PropertyFilterT) =>
-      dispatch(actions.changePropertyFilter(filter))
+    onPropertyFilterChanged: (filter: PropertyFilterT) => {
+      dispatch(actions.changePropertyFilter(filter));
+    }
   };
 }
 

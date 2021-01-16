@@ -1,19 +1,18 @@
-import React from 'react';
-import PropertyList from './PropertyList';
-import { PropertyI } from '../../types';
-import styles from './PropertyListWrapper.module.css';
+import React, { FC } from "react";
+import PropertyList from "./PropertyList";
+import { PropertyI } from "../../types";
+import styles from "./PropertyListWrapper.module.css";
 
-interface Props {
+interface PropertyListWrapperProps {
   propertyList: PropertyI[];
 }
 
-function PropertyListWrapper(props: Props): JSX.Element {
-  const { propertyList } = props;
-  return (
-    <div className={styles.list}>
-      <PropertyList propertyList={propertyList} />
-    </div>
-  );
-}
+const PropertyListWrapper: FC<PropertyListWrapperProps> = ({
+  propertyList
+}) => (
+  <div className={styles.list}>
+    <PropertyList propertyList={propertyList} />
+  </div>
+);
 
 export default PropertyListWrapper;

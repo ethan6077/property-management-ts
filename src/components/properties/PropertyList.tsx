@@ -1,24 +1,27 @@
-import React from 'react';
-import Property from '../property/Property';
-import { PropertyI } from '../../types';
+import React, { FC } from "react";
+import Property from "../property/Property";
+import { PropertyI } from "../../types";
 
-interface Props {
+interface PropertyItemProps {
+  property: PropertyI;
+}
+
+const PropertyItem: FC<PropertyItemProps> = ({ property }) => (
+  <li key={property.id}>
+    <Property property={property} />
+  </li>
+);
+
+interface PropertyListProps {
   propertyList: PropertyI[];
 }
 
-function renderPropertyItem(property: PropertyI): JSX.Element {
-  return (
-    <li key={property.id}>
-      <Property property={property} />
-    </li>
-  );
-}
-
-function PropertyList(props: Props): JSX.Element {
-  const { propertyList } = props;
-  return (
-    <ul>{propertyList.map((item): JSX.Element => renderPropertyItem(item))}</ul>
-  );
-}
+const PropertyList: FC<PropertyListProps> = ({ propertyList }) => (
+  <ul>
+    {propertyList.map(item => (
+      <PropertyItem property={item} />
+    ))}
+  </ul>
+);
 
 export default PropertyList;

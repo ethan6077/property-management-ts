@@ -23,6 +23,6 @@
 ## Extra Feature
 
 1. CSS modules
-2. Responsive
+2. Responsive and Mobile friendly
 3. Component is designed to be reusable and testable
 4. TypeScript

@@ -3,15 +3,14 @@
   background-color: #30363f;
   position: fixed;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .headerBar select {
-  position: absolute;
-  top: 30px;
-  right: 100px;
   width: 150px;
   background-color: #30363f;
-  border: none;
   font-size: 15px;
   color: white;
 }
